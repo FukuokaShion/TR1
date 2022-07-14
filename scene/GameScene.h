@@ -1,15 +1,14 @@
 ﻿#pragma once
-
-#include "Audio.h"
 #include "DirectXCommon.h"
+#include "Audio.h"
 #include "DebugText.h"
 #include "Input.h"
-#include "Model.h"
 #include "SafeDelete.h"
 #include "Sprite.h"
-#include "ViewProjection.h"
-#include "WorldTransform.h"
 #include <DirectXMath.h>
+
+#include"Box.h"
+
 
 /// <summary>
 /// ゲームシーン
@@ -48,30 +47,12 @@ class GameScene {
 	Audio* audio_ = nullptr;
 	DebugText* debugText_ = nullptr;
 
-	//テクスチャハンドル
-	uint32_t textureHandle_ = 0;
+	Box* redBox = nullptr;
+	Box* greenBox = nullptr;
 
-	//3Dモデル
-	Model* model_ = nullptr;
+	Box* wall = nullptr;
 
-	//ワールドトランスフォーム
-	WorldTransform worldtransform_[100];
-	//ビュープロジェクション
-	ViewProjection viewprojection_; 
-
-public:
-	//パーツID
-	enum PartId {
-		Root,//大元
-		Spine,//脊髄
-		Chest,//胸
-		Head,//頭
-		ArmL,//左腕
-		ArmR,//右腕
-		Hip,//尻
-		LegL,//左足
-		LegR,//右足
-  };
+	int32_t count;
 
 	/// <summary>
 	/// ゲームシーン用
